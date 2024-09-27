@@ -1,3 +1,6 @@
+import util.InputProcessor;
+import util.InputReader;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -10,7 +13,8 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-
+        InputReader reader = new InputReader();
+        reader.readInputTxt();
     }
 }
 

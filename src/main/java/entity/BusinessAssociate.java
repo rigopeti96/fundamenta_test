@@ -16,7 +16,7 @@ public class BusinessAssociate {
         return commission;
     }
 
-    public void increaseComission(int increment){
+    public void increaseCommission(int increment){
         commission+= increment;
     }
 }
