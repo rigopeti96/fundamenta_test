@@ -1,6 +1,8 @@
 package validator;
 
 import entity.Product;
+import exception.IncrementIsEmptyException;
+import exception.IncrementIsInvalidException;
 import exception.ProductTypeIsEmptyException;
 import exception.ProductTypeIsInvalidException;
 
@@ -26,9 +28,10 @@ public class Validator {
 
     /**
      *
+     * @param associateName
      * @return
      */
-    public boolean validateBusinessAssociate(){
+    public boolean validateBusinessAssociate(String associateName){
 
 
         return true;
@@ -36,9 +39,15 @@ public class Validator {
 
     /**
      *
+     * @param increment
      * @return
      */
-    public boolean validateIncrement(){
+    public boolean validateIncrement(Integer increment){
+        if(increment == null)
+            throw new IncrementIsEmptyException("Increment must not be null!", new RuntimeException());
+
+        if(increment < 0)
+            throw new IncrementIsInvalidException("Increment must not be a negative number!", new RuntimeException());
 
         return true;
     }

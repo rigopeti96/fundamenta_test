@@ -1,11 +1,25 @@
 package entity;
 
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+@XmlRootElement(name = "businessAssociate")
+@XmlType(propOrder = { "name", "commission"})
 public class BusinessAssociate {
-    private final String name;
+    @XmlElement
+    private String name;
+    @XmlElement
     private int commission = 0;
 
+    public BusinessAssociate(){name = null;}
     public BusinessAssociate(String name){
         this.name = name;
+    }
+    public BusinessAssociate(String name, Integer commission){
+        this.name = name;
+        this.commission = commission;
     }
 
     public String getName(){

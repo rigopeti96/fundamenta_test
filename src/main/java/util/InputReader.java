@@ -10,7 +10,7 @@ import java.util.List;
 public class InputReader {
     private List<String> lines = new ArrayList<>();
 
-    public void readInputTxt(){
+    public List<String> readInputTxt(){
         try {
             File file=new File("src/main/resources/Feladat_fejlesztőknek_1_jutalékadatok.txt");    //creates a new file instance
             FileReader fr=new FileReader(file);   //reads the file
@@ -20,9 +20,11 @@ public class InputReader {
                 lines.add(line);
             }
             fr.close();    //closes the stream and release the resources
-            System.out.println("Lenght of list: " + lines.size());
+
         } catch(IOException e) {
             e.printStackTrace();
         }
+
+        return lines;
     }
 }
