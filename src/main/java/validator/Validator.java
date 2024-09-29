@@ -15,12 +15,12 @@ public class Validator {
     public boolean validateProduct(Product product){
         String[] acceptableProductNames = {"A", "B", "C"};
 
-        if(product.getProductName().isEmpty() || product.getProductName().equals(""))
+        if(product.getProductName().isEmpty() || product.getProductName() == null)
             throw new ProductTypeIsEmptyException("Product type must not be empty!", new RuntimeException());
 
         for (String item : acceptableProductNames) {
-            if (!product.getProductName().contains(item))
-                throw new ProductTypeIsInvalidException("Product type name is invalid!", new RuntimeException());
+            if (!product.getProductName().equals(item))
+                throw new ProductTypeIsInvalidException("Product type name " + item + " is invalid!", new RuntimeException());
         }
 
         return true;

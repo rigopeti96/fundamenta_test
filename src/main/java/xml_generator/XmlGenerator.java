@@ -1,5 +1,6 @@
 package xml_generator;
 
+import entity.AllBusinessAssociate;
 import entity.BusinessAssociate;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -9,7 +10,7 @@ import java.io.File;
 import java.util.List;
 
 public class XmlGenerator {
-    public void generateOutputXml(List<BusinessAssociate> associates) throws JAXBException {
+    public void generateOutputXml(AllBusinessAssociate associates) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(BusinessAssociate.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
