@@ -1,7 +1,9 @@
 package util;
 
 import entity.BusinessAssociate;
+import entity.LineData;
 import entity.Product;
+import exception.ValidationException;
 import validator.Validator;
 
 import java.util.ArrayList;
@@ -10,32 +12,28 @@ import java.util.List;
 public class InputProcessor {
     private final List<String> rawData = new ArrayList<>();
     private Validator validator = new Validator();
-    private final List<BusinessAssociate> associates = new ArrayList<>();
+    private List<LineData> readInputData = new ArrayList<>();
 
     public InputProcessor(List<String> rawData){
         this.rawData.addAll(rawData);
-
-        associates.add(new BusinessAssociate("Ü1"));
-        associates.add(new BusinessAssociate("Ü2"));
-        associates.add(new BusinessAssociate("Ü3"));
     }
 
-    private void processLines(){
-        for(int i = 0; i < rawData.size(); i++){
-            String[] parts = rawData.get(i).split("\\|");
-            try{
-                validateParts(parts);
-            } catch (RuntimeException e){
-                //TODO: change catchable exception type and create log
+    public List<LineData> processLines(){
+        for (String rawDataItem : rawData) {
+            String[] parts = rawDataItem.split("\\|");
+            try {
+                if (validateParts(parts)) {
+                    readInputData.add(new LineData(new Product(parts[0]), parts[1], Integer.parseInt(parts[2])));
+                }
+            } catch (ValidationException e) {
                 e.printStackTrace();
             }
-
-
         }
+
+        return readInputData;
     }
 
-
-    private boolean validateParts(String[] parts){
+    private boolean validateParts(String[] parts) throws ValidationException{
         Product product = new Product(parts[0]);
         Integer productPrize = Integer.parseInt(parts[2]);
 

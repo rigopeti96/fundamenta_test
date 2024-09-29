@@ -9,7 +9,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(propOrder = { "name", "commission"})
 public class BusinessAssociate {
     @XmlElement
-    private String name;
+    private final String name;
     @XmlElement
     private int commission = 0;
 

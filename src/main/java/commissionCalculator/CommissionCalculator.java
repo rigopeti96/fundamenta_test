@@ -3,15 +3,17 @@ package commissionCalculator;
 import entity.Product;
 
 public class CommissionCalculator {
-    public static int calculateTotalCommission(Product product, Integer productPrize) {
+
+
+    public int calculateTotalCommission(Product product, Integer productPrize) {
         return calculateBaseCommission(productPrize) + calculateBonusCommission(product, productPrize);
     }
 
-    private static int calculateBaseCommission(Integer productPrize){
+    private int calculateBaseCommission(Integer productPrize){
         return (int) (productPrize * 0.01);
     }
 
-    private static int calculateBonusCommission(Product product, Integer productPrize){
+    private int calculateBonusCommission(Product product, Integer productPrize){
         switch (product.getProductName()){
             case "A":
                 return calculateBonusCommissionA(productPrize);
@@ -24,7 +26,7 @@ public class CommissionCalculator {
         }
     }
 
-    private static int calculateBonusCommissionA(Integer productPrize){
+    private int calculateBonusCommissionA(Integer productPrize){
         if(productPrize <= 999999999)
             return 0;
         if(productPrize <= 1999999999)
@@ -33,7 +35,7 @@ public class CommissionCalculator {
             return 40000;
     }
 
-    private static int calculateBonusCommissionB(Integer productPrize){
+    private int calculateBonusCommissionB(Integer productPrize){
         if(productPrize <= 799999999)
             return 0;
         if(productPrize <= 1599999999)
