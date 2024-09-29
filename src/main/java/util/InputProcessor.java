@@ -2,9 +2,6 @@ package util;
 
 import entity.BusinessAssociate;
 import entity.Product;
-import exception.IncrementIsInvalidException;
-import exception.ProductTypeIsEmptyException;
-import exception.ProductTypeIsInvalidException;
 import validator.Validator;
 
 import java.util.ArrayList;
@@ -40,8 +37,8 @@ public class InputProcessor {
 
     private boolean validateParts(String[] parts){
         Product product = new Product(parts[0]);
-        Integer increment = Integer.parseInt(parts[2]);
+        Integer productPrize = Integer.parseInt(parts[2]);
 
-        return validator.validateProduct(product) && validator.validateBusinessAssociate(parts[1]) && validator.validateIncrement(increment);
+        return validator.validateProduct(product) && validator.validateBusinessAssociate(parts[1]) && validator.validateProductPrize(productPrize);
     }
 }

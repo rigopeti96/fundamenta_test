@@ -1,8 +1,8 @@
 package validator;
 
 import entity.Product;
-import exception.IncrementIsEmptyException;
-import exception.IncrementIsInvalidException;
+import exception.ProductPrizeIsEmptyException;
+import exception.ProductPrizeIsInvalidException;
 import exception.ProductTypeIsEmptyException;
 import exception.ProductTypeIsInvalidException;
 
@@ -39,15 +39,15 @@ public class Validator {
 
     /**
      *
-     * @param increment
+     * @param productPrize
      * @return
      */
-    public boolean validateIncrement(Integer increment){
-        if(increment == null)
-            throw new IncrementIsEmptyException("Increment must not be null!", new RuntimeException());
+    public boolean validateProductPrize(Integer productPrize){
+        if(productPrize == null)
+            throw new ProductPrizeIsEmptyException("Product prize must not be null!", new RuntimeException());
 
-        if(increment < 0)
-            throw new IncrementIsInvalidException("Increment must not be a negative number!", new RuntimeException());
+        if(productPrize < 0)
+            throw new ProductPrizeIsInvalidException("Product prize must not be a negative number!", new RuntimeException());
 
         return true;
     }
