@@ -9,8 +9,5 @@
         <module name="fundamenta_test" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="fundamenta_test" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>
