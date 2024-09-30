@@ -1,9 +1,6 @@
 package util;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +15,6 @@ public class InputReader {
             BufferedReader br=new BufferedReader(fr);  //creates a buffering character input stream
             String line;
             while((line=br.readLine())!=null) {
-                System.out.println("Read line: " + line);
                 lines.add(line);
             }
             fr.close();    //closes the stream and release the resources

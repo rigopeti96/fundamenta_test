@@ -11,6 +11,10 @@ public class BusinessAssociate {
     @XmlElement
     private int commission = 0;
 
+    private int commissionProductA = 0;
+    private int commissionProductB = 0;
+    private int commissionProductC = 0;
+
     public BusinessAssociate(){name = null;}
     public BusinessAssociate(String name){
         this.name = name;
@@ -30,5 +34,29 @@ public class BusinessAssociate {
 
     public void increaseCommission(int increment){
         commission+= increment;
+    }
+
+    public int getCommissionProductA() {
+        return commissionProductA;
+    }
+
+    public int getCommissionProductB() {
+        return commissionProductB;
+    }
+
+    public int getCommissionProductC() {
+        return commissionProductC;
+    }
+
+    public void increaseCommissionProductA(int increment){
+        commissionProductA+= increment;
+    }
+
+    public void increaseCommissionProductB(int increment){
+        commissionProductB+= increment;
+    }
+
+    public void increaseCommissionProductC(int increment){
+        commissionProductC+= increment;
     }
 }

@@ -2,6 +2,7 @@ package commissionCalculator;
 
 import entity.BusinessAssociate;
 import entity.LineData;
+import entity.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +24,28 @@ public class AssociateCommissionCalculator {
         for(LineData actData: readInputDatas) {
             int associateIndex = findAssociateIndex(actData.getBusinessAssociateName());
             if(associateIndex != -1){
-                associates.get(associateIndex).increaseCommission(commissionCalculator.calculateTotalCommission(actData.getProduct(), actData.getPrize()));
+                associates.get(associateIndex).increaseCommission(commissionCalculator.calculateBaseCommission(actData.getPrize()));
+                increaseProductCommission(actData, associateIndex);
             }
         }
 
         return associates;
+    }
+
+    private void increaseProductCommission(LineData actData, int associateIndex){
+        switch (actData.getProduct().getProductName()){
+            case ("A"):
+                associates.get(associateIndex).increaseCommissionProductA(actData.getPrize());
+                break;
+            case ("B"):
+                associates.get(associateIndex).increaseCommissionProductB(actData.getPrize());
+                break;
+            case ("C"):
+                associates.get(associateIndex).increaseCommissionProductC(actData.getPrize());
+                break;
+            default:
+                break;
+        }
     }
 
     private int findAssociateIndex(String associateName) {

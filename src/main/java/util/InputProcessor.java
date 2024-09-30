@@ -37,6 +37,6 @@ public class InputProcessor {
         Product product = new Product(parts[0]);
         Integer productPrize = Integer.parseInt(parts[2]);
 
-        return validator.validateBusinessAssociate(parts[1]) && validator.validateProductPrize(productPrize);
+        return validator.validateProduct(product) && validator.validateBusinessAssociate(parts[1]) && validator.validateProductPrize(productPrize);
     }
 }

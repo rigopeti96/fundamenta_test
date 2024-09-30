@@ -1,4 +1,5 @@
 import commissionCalculator.AssociateCommissionCalculator;
+import commissionCalculator.BonusCalculator;
 import commissionCalculator.CommissionCalculator;
 import entity.AllBusinessAssociate;
 import entity.BusinessAssociate;
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        BonusCalculator bonusCalculator = new BonusCalculator();
         InputReader inputReader = new InputReader();
         List<String> readLines = inputReader.readInputTxt();
 
@@ -28,6 +30,12 @@ public class Main {
         AssociateCommissionCalculator commissionCalculator = new AssociateCommissionCalculator(processedLines);
 
         List<BusinessAssociate> associates  = commissionCalculator.calculateAssociatesCommissions();
+
+        for (BusinessAssociate businessAssociate : associates) {
+            int totalBonusCommission = bonusCalculator.calculateTotalBonus(businessAssociate.getCommissionProductA(), businessAssociate.getCommissionProductB(), businessAssociate.getCommissionProductC());
+            businessAssociate.increaseCommission(totalBonusCommission);
+        }
+
         AllBusinessAssociate allBusinessAssociate = new AllBusinessAssociate();
         allBusinessAssociate.setBusinessAssociates(associates);
 
