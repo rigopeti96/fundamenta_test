@@ -7,11 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Validator {
-    /**
-     * Validate if the read product name is correct
-     * @param product: Product created based on read line
-     * @return true if product is valid
-     */
     public boolean validateProduct(Product product){
         List<String> list = Arrays.asList("A", "B", "C");
 
@@ -24,11 +19,6 @@ public class Validator {
         return true;
     }
 
-    /**
-     *
-     * @param associateName
-     * @return
-     */
     public boolean validateBusinessAssociate(String associateName){
         List<String> list = Arrays.asList("Ü1", "Ü2", "Ü3");
 
@@ -41,11 +31,6 @@ public class Validator {
         return true;
     }
 
-    /**
-     *
-     * @param productPrize
-     * @return
-     */
     public boolean validateProductPrize(Integer productPrize){
         if(productPrize == null)
             throw new ProductPrizeIsEmptyException("Product prize must not be null!", new RuntimeException());
