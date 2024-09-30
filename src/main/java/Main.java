@@ -6,6 +6,8 @@ import entity.LineData;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
 import util.InputProcessor;
 import util.InputReader;
 import xml_generator.XmlGenerator;
@@ -24,10 +26,11 @@ public class Main {
         List<LineData> processedLines = inputProcessor.processLines();
 
         AssociateCommissionCalculator commissionCalculator = new AssociateCommissionCalculator(processedLines);
-        List<BusinessAssociate> associates  = commissionCalculator.calculateAssociatesCommissions();
 
+        List<BusinessAssociate> associates  = commissionCalculator.calculateAssociatesCommissions();
         AllBusinessAssociate allBusinessAssociate = new AllBusinessAssociate();
         allBusinessAssociate.setBusinessAssociates(associates);
+
         XmlGenerator xmlGenerator = new XmlGenerator();
         try {
             xmlGenerator.generateOutputXml(allBusinessAssociate);

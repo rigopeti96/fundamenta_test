@@ -7,13 +7,16 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 
 import java.io.File;
+import java.io.StringWriter;
 import java.util.List;
 
 public class XmlGenerator {
-    public void generateOutputXml(AllBusinessAssociate associates) throws JAXBException {
-        JAXBContext jaxbContext = JAXBContext.newInstance(BusinessAssociate.class);
+    StringWriter stringWriter = new StringWriter();
+
+    public void generateOutputXml(AllBusinessAssociate listBusinessAssociates) throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(AllBusinessAssociate.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        jaxbMarshaller.marshal(associates, new File("output.xml"));
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshaller.marshal(listBusinessAssociates, new File("associates.xml"));
     }
 }

@@ -1,18 +1,15 @@
 package entity;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement(name = "businessAssociates")
+@XmlRootElement(name = "allBusinessAssociates")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AllBusinessAssociate {
 
-    @XmlElement(name = "businessAssociate")
     private List<BusinessAssociate> businessAssociates = new ArrayList<>();
 
     public List<BusinessAssociate> getBusinessAssociates() {
